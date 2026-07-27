@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KNA Events | Stratford, CT Wedding Planning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#7A5C61;
+    --secondary:#F4EDE4;
+    --accent:#C9A66B;
+    --neutral:#2E2A2B;
+    --white:#FFFDFB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Jost',sans-serif;color:var(--neutral);background:var(--white);line-height:1.6;}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--neutral);}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,253,251,0.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,0.05);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1180px;margin:0 auto;}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;letter-spacing:1px;color:var(--primary);font-weight:600;}
+  .logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:32px;align-items:center;}
+  .nav-links a{font-size:0.95rem;letter-spacing:0.3px;color:var(--neutral);transition:color .2s;}
+  .nav-links a:hover{color:var(--primary);}
+  .nav-links a.nav-cta{background:var(--primary);color:var(--white);padding:10px 22px;border-radius:2px;font-size:0.9rem;letter-spacing:0.5px;transition:background .2s;}
+  .nav-cta:hover{background:var(--neutral);}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .hamburger span{width:26px;height:2px;background:var(--neutral);display:block;}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:140px 0 80px;background:
+    linear-gradient(160deg, rgba(122,92,97,0.55), rgba(46,42,43,0.45)),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+  }
+  .hero-content{max-width:640px;color:var(--white);}
+  .hero-eyebrow{display:flex;align-items:center;gap:10px;font-size:0.85rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+  .hero-eyebrow .line{width:40px;height:1px;background:var(--accent);}
+  .hero h1{font-size:clamp(2.6rem, 6vw, 4.4rem);line-height:1.05;margin-bottom:22px;color:var(--white);}
+  .hero h1 em{font-style:italic;color:var(--accent);}
+  .hero p{font-size:1.15rem;max-width:480px;margin-bottom:34px;color:rgba(255,255,255,0.9);font-weight:300;}
+  .btn-row{display:flex;gap:18px;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:2px;font-size:0.95rem;letter-spacing:0.5px;transition:transform .2s, background .2s;}
+  .btn-primary{background:var(--accent);color:var(--neutral);font-weight:500;}
+  .btn-primary:hover{background:var(--white);transform:translateY(-2px);}
+  .btn-outline{border:1px solid rgba(255,255,255,0.6);color:var(--white);}
+  .btn-outline:hover{background:rgba(255,255,255,0.12);transform:translateY(-2px);}
+
+  section{padding:110px 0;}
+  .section-label{display:flex;align-items:center;gap:12px;font-size:0.85rem;letter-spacing:3px;text-transform:uppercase;color:var(--primary);margin-bottom:16px;font-weight:500;}
+  .section-label .line{width:32px;height:1px;background:var(--accent);}
+  .section-title{font-size:clamp(2rem,4vw,2.8rem);max-width:600px;margin-bottom:20px;}
+  .section-sub{max-width:560px;color:#5c5555;font-weight:300;font-size:1.05rem;}
+
+  /* ABOUT */
+  .about{background:var(--secondary);}
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:70px;align-items:center;}
+  .about-img{position:relative;}
+  .about-img img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;box-shadow:0 30px 60px -25px rgba(46,42,43,0.35);}
+  .about-photo-placeholder{aspect-ratio:4/5;border-radius:4px;background:linear-gradient(150deg,var(--primary),#5f464a);box-shadow:0 30px 60px -25px rgba(46,42,43,0.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:rgba(255,255,255,0.85);}
+  .about-photo-placeholder svg{width:56px;height:56px;opacity:0.85;}
+  .about-photo-placeholder span{font-size:0.85rem;letter-spacing:0.3px;font-weight:300;}
+  .about-badge{position:absolute;bottom:-24px;left:-24px;background:var(--white);padding:22px 26px;border-radius:4px;box-shadow:0 20px 40px -20px rgba(0,0,0,0.25);}
+  .about-badge .num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--primary);font-weight:600;}
+  .about-badge .lbl{font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;color:#7a7373;}
+  .about-text p{color:#4a4444;font-weight:300;margin-bottom:18px;font-size:1.02rem;}
+  .signature{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;color:var(--primary);margin-top:22px;}
+
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;}
+  .plan-card{background:var(--white);border:1px solid rgba(0,0,0,0.08);border-radius:6px;padding:44px 34px;position:relative;transition:transform .25s, box-shadow .25s;}
+  .plan-card:hover{transform:translateY(-8px);box-shadow:0 30px 50px -30px rgba(46,42,43,0.25);}
+  .plan-card.featured{border-color:var(--accent);background:linear-gradient(180deg,#fff,var(--secondary));}
+  .plan-tag{position:absolute;top:-14px;right:34px;background:var(--accent);color:var(--neutral);font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:20px;font-weight:500;}
+  .plan-icon{width:46px;height:46px;color:var(--primary);margin-bottom:22px;}
+  .plan-card h3{font-size:1.5rem;margin-bottom:8px;}
+  .plan-price{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--primary);font-weight:600;margin-bottom:18px;}
+  .plan-price span{font-size:1rem;color:#8a8383;font-family:'Jost',sans-serif;font-weight:300;}
+  .plan-list{list-style:none;margin-bottom:26px;}
+  .plan-list li{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-size:0.94rem;color:#4a4444;font-weight:300;}
+  .plan-list svg{width:16px;height:16px;flex-shrink:0;margin-top:4px;color:var(--accent);}
+  .plan-cta{display:block;text-align:center;padding:13px;border:1px solid var(--primary);color:var(--primary);border-radius:2px;font-size:0.9rem;letter-spacing:0.5px;transition:background .2s,color .2s;}
+  .plan-cta:hover{background:var(--primary);color:var(--white);}
+  .plan-card.featured .plan-cta{background:var(--primary);color:var(--white);}
+  .ala-carte-note{text-align:center;margin-top:40px;color:#5c5555;font-weight:300;}
+  .ala-carte-note strong{color:var(--primary);}
+
+  /* PROCESS */
+  .process{background:var(--neutral);color:var(--white);}
+  .process .section-title, .process h2{color:var(--white);}
+  .process .section-sub{color:rgba(255,255,255,0.7);}
+  .process .section-label{color:var(--accent);}
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:56px;}
+  .process-step{text-align:left;}
+  .process-num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--accent);font-weight:600;margin-bottom:14px;opacity:0.9;}
+  .process-step h3{color:var(--white);font-size:1.25rem;margin-bottom:10px;}
+  .process-step p{color:rgba(255,255,255,0.65);font-weight:300;font-size:0.95rem;}
+
+  /* TESTIMONIALS */
+  .testimonials{background:var(--secondary);}
+  .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;}
+  .test-card{background:var(--white);padding:36px 30px;border-radius:6px;box-shadow:0 20px 40px -30px rgba(0,0,0,0.2);}
+  .stars{display:flex;gap:4px;color:var(--accent);margin-bottom:18px;}
+  .stars svg{width:18px;height:18px;}
+  .test-card p{font-style:italic;color:#4a4444;font-weight:300;margin-bottom:20px;font-size:1rem;}
+  .test-name{font-weight:500;color:var(--primary);}
+  .test-role{font-size:0.85rem;color:#8a8383;}
+
+  /* GALLERY */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:14px;margin-top:56px;}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;border-radius:4px;transition:transform .4s;}
+  .gallery-grid a{overflow:hidden;border-radius:4px;display:block;}
+  .gallery-grid a:hover img{transform:scale(1.06);}
+  .gallery-grid .span2{grid-column:span 2;}
+  .gallery-grid .row2{grid-row:span 2;}
+  .gallery-placeholder{background:linear-gradient(150deg,var(--secondary),#e8dccb);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--primary);text-align:center;padding:12px;}
+  .gallery-placeholder svg{width:34px;height:34px;opacity:0.75;}
+  .gallery-placeholder span{font-size:0.8rem;letter-spacing:0.3px;color:#7a7373;font-weight:300;}
+
+  /* CTA BAND */
+  .cta-band{background:linear-gradient(135deg,var(--primary),#5f464a);color:var(--white);text-align:center;padding:100px 0;}
+  .cta-band h2{color:var(--white);font-size:clamp(2rem,4vw,3rem);margin-bottom:20px;}
+  .cta-band p{max-width:520px;margin:0 auto 34px;color:rgba(255,255,255,0.85);font-weight:300;}
+  .cta-band .btn-primary{background:var(--accent);color:var(--neutral);}
+
+  /* FOOTER */
+  footer{background:var(--neutral);color:rgba(255,255,255,0.7);padding:70px 0 30px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;margin-bottom:50px;}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--white);margin-bottom:14px;}
+  .footer-logo span{color:var(--accent);}
+  .footer-grid p{font-weight:300;font-size:0.92rem;max-width:300px;}
+  .footer-col h4{color:var(--white);font-size:0.95rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;font-weight:500;}
+  .footer-col a{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.7);transition:color .2s;}
+  .footer-col a:hover{color:var(--accent);}
+  .footer-col svg{width:16px;height:16px;color:var(--accent);flex-shrink:0;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:0.82rem;color:rgba(255,255,255,0.5);}
+
+  @media(max-width:900px){
+    .nav-links{position:fixed;top:64px;left:0;right:0;background:var(--white);flex-direction:column;padding:24px;gap:18px;transform:translateY(-150%);transition:transform .3s;box-shadow:0 20px 30px -20px rgba(0,0,0,0.15);}
+    .nav-links.open{transform:translateY(0);}
+    .hamburger{display:flex;}
+    .about-grid{grid-template-columns:1fr;gap:60px;}
+    .about-badge{position:static;margin-top:20px;display:inline-block;}
+    .services-grid{grid-template-columns:1fr;}
+    .process-grid{grid-template-columns:repeat(2,1fr);}
+    .test-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr;gap:34px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="logo">KNA <span>Events</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a href="https://sites.codexbizops.com/get-started" target="_blank" rel="noopener" class="nav-cta">Claim This Site</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="line"></span>Stratford, Connecticut</div>
+      <h1>Let's make your <em>wedding dreams</em> come true.</h1>
+      <p>Full-service and month-of wedding planning for Connecticut couples, led by a planner who's spent 6 years turning "someday" into your actual wedding day.</p>
+      <div class="btn-row">
+        <a href="#services" class="btn btn-primary">View Packages</a>
+        <a href="#contact" class="btn btn-outline">Book a Free Consult</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-img">
+      <img src="images/kirsten-headshot.jpg" alt="Kirsten, founder of KNA Events">
+      <div class="about-badge">
+        <div class="num">6+</div>
+        <div class="lbl">Years in Weddings</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-label"><span class="line"></span>Meet Your Planner</div>
+      <h2 class="section-title">Hi, I'm Kirsten.</h2>
+      <p>I'm a Connecticut native with a business management background and 6 years in the wedding industry — including 2.5 years as a bridal consultant working directly with brides on the biggest day of their lives.</p>
+      <p>I started KNA Events because I saw weddings from the inside and knew couples deserved a planner who's organized, honest about budgets, and just as excited about your day as you are. No cookie-cutter timelines — every wedding I plan is built around the two of you.</p>
+      <div class="signature">— Kirsten, Founder</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-label"><span class="line"></span>Packages</div>
+    <h2 class="section-title">Planning support at every stage.</h2>
+    <p class="section-sub">Whether you need help from day one or just someone to run the show on the big day, there's a package built for where you're at.</p>
+
+    <div class="services-grid">
+      <div class="plan-card">
+        <svg class="plan-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+        <h3>Month-of Coordination</h3>
+        <div class="plan-price">$990</div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Final walkthrough & timeline</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Vendor coordination, 30 days out</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Full day-of coordination</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>On-site setup oversight</li>
+        </ul>
+        <a href="#contact" class="plan-cta">Get Started</a>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="plan-tag">Most Popular</div>
+        <svg class="plan-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+        <h3>Partial Service</h3>
+        <div class="plan-price">$1,150</div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Everything in Month-of</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Vendor recommendations & booking help</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Budget tracking tools</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Design & styling guidance</li>
+        </ul>
+        <a href="#contact" class="plan-cta">Get Started</a>
+      </div>
+
+      <div class="plan-card">
+        <svg class="plan-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+        <h3>Full Service</h3>
+        <div class="plan-price">$1,500</div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Everything in Partial Service</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Planning from engagement to "I do"</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Full vendor sourcing & contracts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Unlimited planning check-ins</li>
+        </ul>
+        <a href="#contact" class="plan-cta">Get Started</a>
+      </div>
+    </div>
+    <p class="ala-carte-note">Need just a little help? <strong>À La Carte services start at $115</strong> — ask what's available.</p>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-label"><span class="line"></span>How It Works</div>
+    <h2 class="section-title">From "yes" to "I do."</h2>
+    <p class="section-sub">A clear, no-surprises process so you always know what's happening next.</p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h3>Free Consultation</h3>
+        <p>We talk vision, budget, and guest count — no pressure, just a conversation.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h3>Choose Your Package</h3>
+        <p>Pick the level of support that fits, from full planning to month-of.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h3>Plan & Design</h3>
+        <p>Vendors booked, timelines built, details nailed down together.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h3>Your Wedding Day</h3>
+        <p>I run point on-site so you and your family can just enjoy it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-label"><span class="line"></span>Kind Words</div>
+    <h2 class="section-title">What couples are saying.</h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+        </div>
+        <p>"Kirsten kept us calm through every vendor hiccup. Our day ran perfectly and we didn't lift a finger."</p>
+        <div class="test-name">Sample Testimonial</div>
+        <div class="test-role">Placeholder — swap in a real review</div>
+      </div>
+      <div class="test-card">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+        </div>
+        <p>"Booking within budget felt impossible until Kirsten stepped in. She found us vendors we loved."</p>
+        <div class="test-name">Sample Testimonial</div>
+        <div class="test-role">Placeholder — swap in a real review</div>
+      </div>
+      <div class="test-card">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 17 5.5 21 7.5 13.5 2 9 9 9"/></svg>
+        </div>
+        <p>"Month-of coordination was the best money we spent. Kirsten handled everything so our families could relax."</p>
+        <div class="test-name">Sample Testimonial</div>
+        <div class="test-role">Placeholder — swap in a real review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-label"><span class="line"></span>Real Celebrations</div>
+    <h2 class="section-title">A few favorite moments.</h2>
+    <div class="gallery-grid">
+      <a href="#" class="span2 row2"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=900&auto=format&fit=crop" alt="Wedding ceremony setting"></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=600&auto=format&fit=crop" alt="Wedding reception table setting"></a>
+      <a href="#"><img src="images/gallery-4.jpg" alt="Reception table setting with couple in the background at golden hour"></a>
+      <a href="#"><img src="images/gallery-5.jpg" alt="Groom holding bride's hand at a floral seaside ceremony"></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?q=80&w=600&auto=format&fit=crop" alt="Wedding rings detail shot"></a>
+    </div>
+    <p class="ala-carte-note" style="margin-top:24px;">Gallery photos are stock placeholders — swap in Kirsten's real event photos once approved.</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Ready to start planning?</h2>
+    <p>Book a free consultation and let's talk about your date, your vision, and how KNA Events can make it happen.</p>
+    <a href="#contact" class="btn btn-primary">Book Your Free Consult</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">KNA <span>Events</span></div>
+        <p>Wedding planning and day-of coordination serving Stratford, Connecticut and the surrounding areas. Let's make your wedding dreams come true.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:2035207315"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>203-520-7315</a>
+        <a href="mailto:knaweddings.events@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M4 4l8 8 8-8"/></svg>knaweddings.events@gmail.com</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-8-4.5-8-11a8 8 0 0 1 16 0c0 6.5-8 11-8 11z"/><circle cx="12" cy="10" r="3"/></svg>Stratford, CT</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <a href="https://instagram.com/knaweddings" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>@knaweddings</a>
+        <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg>The Knot</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 KNA Events LLC. All rights reserved.</span>
+      <span>Site preview — built by <a href="https://sites.codexbizops.com/get-started" target="_blank" rel="noopener" style="color:var(--accent);">Codex BizOps</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  hamburgerBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
